@@ -1,0 +1,63 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    dataBinding.enabled = true
+
+    compileSdkVersion 29
+    defaultConfig {
+        applicationId "com.varunbarad.myplaces"
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    // Kotlin
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${libraryVersions.kotlin}"
+
+    // RxJava
+    implementation "io.reactivex.rxjava2:rxjava:${libraryVersions.rxJava.rxJava2}"
+    implementation "io.reactivex.rxjava2:rxkotlin:${libraryVersions.rxJava.rxKotlin}"
+    implementation "io.reactivex.rxjava2:rxandroid:${libraryVersions.rxJava.rxAndroid}"
+
+    // Android Kotlin Extensions
+    implementation "androidx.core:core-ktx:${libraryVersions.androidX.kotlinExtensions}"
+
+    // AppCompat
+    implementation "androidx.appcompat:appcompat:${libraryVersions.androidX.appCompat}"
+
+    // Constraint Layout
+    implementation "androidx.constraintlayout:constraintlayout:${libraryVersions.androidX.constraintLayout}"
+
+    // Material Design
+    implementation "com.google.android.material:material:${libraryVersions.androidX.materialDesign}"
+
+    // Room database library
+    implementation "androidx.room:room-runtime:${libraryVersions.androidX.room}"
+    annotationProcessor "androidx.room:room-compiler:${libraryVersions.androidX.room}"
+    kapt "androidx.room:room-compiler:${libraryVersions.androidX.room}"
+    implementation "androidx.room:room-rxjava2:${libraryVersions.androidX.room}"
+
+    // Testing Libraries
+    testImplementation "junit:junit:${libraryVersions.jUnit.core}"
+
+    // Mockito
+    testImplementation "org.mockito:mockito-core:${libraryVersions.mockito.core}"
+
+    // Android Instrumentation Tests
+    androidTestImplementation "androidx.test.ext:junit:${libraryVersions.jUnit.androidExtension}"
+    androidTestImplementation "androidx.test.espresso:espresso-core:${libraryVersions.espresso.core}"
+}
