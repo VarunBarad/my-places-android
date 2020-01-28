@@ -2,7 +2,9 @@
 
 package com.varunbarad.myplaces.util
 
+import com.varunbarad.myplaces.external_services.local_database.model.DbLocation
 import com.varunbarad.myplaces.external_services.local_database.model.DbNote
+import com.varunbarad.myplaces.model.UiLocation
 import com.varunbarad.myplaces.model.UiNote
 
 fun DbNote.toUiNote(): UiNote {
@@ -12,5 +14,15 @@ fun DbNote.toUiNote(): UiNote {
         content = this.contents,
         timestamp = this.timestamp
             ?: throw IllegalArgumentException("Note to be shown has to have a timestamp")
+    )
+}
+
+fun DbLocation.toUiLocation(): UiLocation {
+    return UiLocation(
+        locationId = this.id
+            ?: throw IllegalArgumentException("Location to be shown has to have an ID"),
+        name = this.name,
+        comments = this.comments,
+        timestamp = this.timestamp
     )
 }
