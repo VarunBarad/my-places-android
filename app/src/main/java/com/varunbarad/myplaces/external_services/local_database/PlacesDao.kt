@@ -21,7 +21,7 @@ interface PlacesDao  {
     fun getAllPlacesSortedReverseChronologically(): Observable<List<DbLocation>>
 
     @Query("select * from Locations where id = :locationId")
-    fun getPlaceDetails(locationId: Long): Single<DbLocation>
+    fun getPlaceDetails(locationId: Long): Observable<DbLocation>
 
     @Update
     fun updatePlaceDetails(location: DbLocation): Completable
