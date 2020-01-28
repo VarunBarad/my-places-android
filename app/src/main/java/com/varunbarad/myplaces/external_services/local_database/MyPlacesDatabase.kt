@@ -16,7 +16,7 @@ import com.varunbarad.myplaces.external_services.local_database.model.DbNote
 @TypeConverters(RoomTypeConverters::class)
 abstract class MyPlacesDatabase : RoomDatabase() {
     abstract fun notesDao(): NotesDao
-    abstract fun locationsDao(): LocationsDao
+    abstract fun placesDao(): PlacesDao
 
     companion object {
         const val databaseVersion = 1

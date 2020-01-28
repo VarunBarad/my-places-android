@@ -8,7 +8,7 @@ import com.varunbarad.myplaces.repositories.RoomNotesRepository
 object Dependencies {
     private lateinit var notesDatabase: MyPlacesDatabase
 
-    fun getNotesDatabase(context: Context): MyPlacesDatabase {
+    fun getPlacesDatabase(context: Context): MyPlacesDatabase {
         synchronized(this) {
             if (!this::notesDatabase.isInitialized) {
                 this.notesDatabase = Room.databaseBuilder(
@@ -23,6 +23,6 @@ object Dependencies {
     }
 
     fun getRoomNotesRepository(context: Context): RoomNotesRepository {
-        return RoomNotesRepository(this.getNotesDatabase(context).notesDao())
+        return RoomNotesRepository(this.getPlacesDatabase(context).notesDao())
     }
 }

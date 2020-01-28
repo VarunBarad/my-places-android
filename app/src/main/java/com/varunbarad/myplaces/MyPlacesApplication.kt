@@ -12,6 +12,6 @@ class MyPlacesApplication : Application() {
         JodaTimeAndroid.init(this)
 
         // This initializes the notes database
-        Dependencies.getNotesDatabase(this)
+        Dependencies.getPlacesDatabase(this)
     }
 }
