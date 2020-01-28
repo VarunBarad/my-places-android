@@ -22,11 +22,19 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    packagingOptions {
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+    }
 }
 
 dependencies {
     // Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${libraryVersions.kotlin}"
+
+    // Joda Time Android
+    implementation "net.danlew:android.joda:${libraryVersions.jodaTimeAndroid}"
 
     // RxJava
     implementation "io.reactivex.rxjava2:rxjava:${libraryVersions.rxJava.rxJava2}"
