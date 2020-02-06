@@ -10,5 +10,7 @@ data class DbLocation(
     @PrimaryKey(autoGenerate = true) val id: Long? = null,
     @ColumnInfo(name = "name") val name: String,
     @ColumnInfo(name = "comments") val comments: String,
-    @ColumnInfo(name = "timestamp") val timestamp: Date
+    @ColumnInfo(name = "timestamp") val timestamp: Date,
+    @ColumnInfo(name = "latitude") val latitude: String,
+    @ColumnInfo(name = "longitude") val longitude: String
 )

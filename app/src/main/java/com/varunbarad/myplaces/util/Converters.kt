@@ -23,6 +23,8 @@ fun DbLocation.toUiLocation(): UiLocation {
             ?: throw IllegalArgumentException("Location to be shown has to have an ID"),
         name = this.name,
         comments = this.comments,
-        timestamp = this.timestamp
+        timestamp = this.timestamp,
+        latitude = this.latitude,
+        longitude = this.longitude
     )
 }

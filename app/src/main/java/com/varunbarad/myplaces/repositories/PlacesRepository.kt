@@ -6,7 +6,12 @@ import io.reactivex.Observable
 import io.reactivex.Single
 
 interface PlacesRepository {
-    fun insertNewPlace(name: String, comments: String): Single<Long>
+    fun insertNewPlace(
+        name: String,
+        comments: String,
+        latitude: String,
+        longitude: String
+    ): Single<Long>
 
     fun getAllPlacesSortedAlphabeticallyByName(): Observable<List<DbLocation>>
 

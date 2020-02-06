@@ -9,12 +9,19 @@ import io.reactivex.Single
 import java.util.*
 
 class RoomPlacesRepository(private val placesDao: PlacesDao) : PlacesRepository {
-    override fun insertNewPlace(name: String, comments: String): Single<Long> {
+    override fun insertNewPlace(
+        name: String,
+        comments: String,
+        latitude: String,
+        longitude: String
+    ): Single<Long> {
         return placesDao.insertPlace(
             DbLocation(
                 name = name,
                 comments = comments,
-                timestamp = Date(System.currentTimeMillis())
+                timestamp = Date(System.currentTimeMillis()),
+                latitude = latitude,
+                longitude = longitude
             )
         ).subscribeOn(ThreadSchedulers.io())
             .observeOn(ThreadSchedulers.main())
