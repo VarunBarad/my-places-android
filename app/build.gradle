@@ -59,6 +59,9 @@ dependencies {
     kapt "androidx.room:room-compiler:${libraryVersions.androidX.room}"
     implementation "androidx.room:room-rxjava2:${libraryVersions.androidX.room}"
 
+    // Google Play Location library
+    implementation "com.google.android.gms:play-services-location:${libraryVersions.googlePlayServices.location}"
+
     // Testing Libraries
     testImplementation "junit:junit:${libraryVersions.jUnit.core}"
 

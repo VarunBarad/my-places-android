@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".screens.add_place.AddPlaceActivity">
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                app:popupTheme="@style/AppTheme.PopupOverlay"
+                app:title="Add this place" />
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInput_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_activity_horizontal"
+                android:layout_marginTop="@dimen/margin_activity_vertical"
+                android:layout_marginEnd="@dimen/margin_activity_horizontal"
+                android:hint="Name"
+                android:paddingStart="@dimen/padding_boxedEditText_horizontal"
+                android:paddingEnd="@dimen/padding_boxedEditText_horizontal"
+                app:boxBackgroundMode="outline"
+                app:boxCornerRadiusBottomEnd="@dimen/cornerRadius_boxedEditText"
+                app:boxCornerRadiusBottomStart="@dimen/cornerRadius_boxedEditText"
+                app:boxCornerRadiusTopEnd="@dimen/cornerRadius_boxedEditText"
+                app:boxCornerRadiusTopStart="@dimen/cornerRadius_boxedEditText"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editText_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:lines="1"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:textSize="16sp"
+                    tools:text="Home - Adam" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInput_comment"
+                android:layout_width="0dp"
+                android:layout_height="200dp"
+                android:layout_marginStart="@dimen/margin_activity_horizontal"
+                android:layout_marginTop="@dimen/margin_interElement_vertical"
+                android:layout_marginEnd="@dimen/margin_activity_horizontal"
+                android:layout_marginBottom="@dimen/margin_interElement_vertical"
+                android:hint="Comments"
+                android:paddingStart="@dimen/padding_boxedEditText_horizontal"
+                android:paddingEnd="@dimen/padding_boxedEditText_horizontal"
+                app:boxBackgroundMode="outline"
+                app:boxCornerRadiusBottomEnd="@dimen/cornerRadius_boxedEditText"
+                app:boxCornerRadiusBottomStart="@dimen/cornerRadius_boxedEditText"
+                app:boxCornerRadiusTopEnd="@dimen/cornerRadius_boxedEditText"
+                app:boxCornerRadiusTopStart="@dimen/cornerRadius_boxedEditText"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textInput_name">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editText_comment"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="start|top"
+                    android:textSize="14sp"
+                    tools:text="You can describe the place here" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textView_coordinates"
+                style="@style/TextAppearance.MaterialComponents.Body2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_activity_horizontal"
+                android:layout_marginTop="@dimen/margin_interElement_vertical"
+                android:layout_marginEnd="@dimen/margin_activity_horizontal"
+                android:gravity="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textInput_comment"
+                tools:text="24.22N, 26.24E" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_fetchCoordinates"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_activity_horizontal"
+                android:layout_marginTop="@dimen/margin_interElement_vertical"
+                android:layout_marginEnd="@dimen/margin_activity_horizontal"
+                android:text="Fetch location coordinates"
+                app:backgroundTint="@color/colorPrimary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textView_coordinates" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textView_gpsAccessRequiredMessage"
+                style="@style/TextAppearance.MaterialComponents.Body1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_activity_horizontal"
+                android:layout_marginTop="@dimen/margin_interElement_vertical"
+                android:layout_marginEnd="@dimen/margin_activity_horizontal"
+                android:text="We will need permission to access device location to fetch coordinates"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/button_fetchCoordinates" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_savePlace"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_activity_horizontal"
+                android:layout_marginEnd="@dimen/margin_activity_horizontal"
+                android:layout_marginBottom="@dimen/margin_activity_vertical"
+                android:padding="@dimen/padding_button"
+                android:text="Save Place"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

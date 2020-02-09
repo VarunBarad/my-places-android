@@ -3,28 +3,31 @@
 buildscript {
     ext {
         libraryVersions = [
-                kotlin         : '1.3.61',
-                jodaTimeAndroid: '2.10.3',
-                rxJava         : [
+                kotlin            : '1.3.61',
+                jodaTimeAndroid   : '2.10.3',
+                rxJava            : [
                         rxJava2  : '2.2.9',
                         rxKotlin : '2.3.0',
                         rxAndroid: '2.1.1'
                 ],
-                androidX       : [
+                androidX          : [
                         kotlinExtensions: '1.1.0',
                         appCompat       : '1.1.0',
                         constraintLayout: '1.1.3',
                         materialDesign  : '1.0.0',
                         room            : '2.2.3',
                 ],
-                jUnit          : [
+                googlePlayServices: [
+                        location: '17.0.0'
+                ],
+                jUnit             : [
                         core            : '4.12',
                         androidExtension: '1.1.1'
                 ],
-                mockito        : [
+                mockito           : [
                         core: '2.24.5'
                 ],
-                espresso       : [
+                espresso          : [
                         core: '3.2.0'
                 ]
         ]

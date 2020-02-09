@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.varunbarad.myplaces">
+    
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -26,6 +29,10 @@
 
         <activity
             android:name=".screens.note_details.NoteDetailsActivity"
+            android:parentActivityName=".screens.list_notes.ListNotesActivity" />
+
+        <activity
+            android:name=".screens.add_place.AddPlaceActivity"
             android:parentActivityName=".screens.list_notes.ListNotesActivity" />
     </application>
 </manifest>
