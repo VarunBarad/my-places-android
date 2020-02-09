@@ -40,5 +40,9 @@
         <activity
             android:name=".screens.add_place.AddPlaceActivity"
             android:parentActivityName=".screens.list_places.ListPlacesActivity" />
+
+        <activity
+            android:name=".screens.place_details.PlaceDetailsActivity"
+            android:parentActivityName=".screens.list_places.ListPlacesActivity" />
     </application>
 </manifest>
