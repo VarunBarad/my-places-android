@@ -15,16 +15,6 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name=".screens.list_notes.ListNotesActivity"
-            android:label="@string/title_activity_list_notes">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-
-        <activity
             android:name=".screens.list_places.ListPlacesActivity"
             android:label="@string/title_activity_list_places">
             <intent-filter>
@@ -32,10 +22,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity
-            android:name=".screens.note_details.NoteDetailsActivity"
-            android:parentActivityName=".screens.list_notes.ListNotesActivity" />
 
         <activity
             android:name=".screens.add_place.AddPlaceActivity"

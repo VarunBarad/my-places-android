@@ -2,16 +2,8 @@
     <string name="app_name">My Places</string>
 
     <string name="title_activity_list_places">@string/app_name</string>
-    <string name="title_activity_list_notes">@string/app_name</string>
-    <string name="title_activity_create_note">Create new Note</string>
     <string name="title_activity_add_place">Add this place</string>
-    <string name="title_activity_note_details">Note details</string>
     <string name="title_activity_place_details">Place details</string>
 
-    <string name="label_save">Save</string>
-    <string name="label_title">Title</string>
-    <string name="label_content">Content</string>
-
-    <string name="message_noStoredNotes">There are no stored notes.\n\nTap that button down there to start creating a new note.</string>
     <string name="message_noStoredPlaces">There are no stored places.\n\nTap that button down there to add a new place.</string>
 </resources>

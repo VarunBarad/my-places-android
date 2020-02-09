@@ -11,7 +11,7 @@ class MyPlacesApplication : Application() {
         // Initialize Joda Time Android library
         JodaTimeAndroid.init(this)
 
-        // This initializes the notes database
+        // This initializes the places database
         Dependencies.getPlacesDatabase(this)
     }
 }
