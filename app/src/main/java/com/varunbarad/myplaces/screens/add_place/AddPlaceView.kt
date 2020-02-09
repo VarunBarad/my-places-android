@@ -21,6 +21,9 @@ interface AddPlaceView {
     fun getCommentsEditTextValue(): String
 
     fun updateScreen(viewState: AddPlaceViewState)
+    fun close()
+
+    fun openPlaceDetailsScreen(placeId: Long)
 
     fun showMessage(messageText: String)
 }

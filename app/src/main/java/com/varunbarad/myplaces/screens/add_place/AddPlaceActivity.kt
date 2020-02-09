@@ -18,6 +18,7 @@ import com.google.android.gms.location.LocationServices
 import com.google.android.material.snackbar.Snackbar
 import com.varunbarad.myplaces.R
 import com.varunbarad.myplaces.databinding.ActivityAddPlaceBinding
+import com.varunbarad.myplaces.screens.place_details.PlaceDetailsActivity
 import com.varunbarad.myplaces.util.Dependencies
 import com.varunbarad.myplaces.util.Event
 import com.varunbarad.myplaces.util.PERMISSION_REQUEST_LOCATION
@@ -169,6 +170,14 @@ class AddPlaceActivity : AppCompatActivity(), AddPlaceView {
             } else {
                 View.GONE
             }
+    }
+
+    override fun close() {
+        this.finish()
+    }
+
+    override fun openPlaceDetailsScreen(placeId: Long) {
+        PlaceDetailsActivity.start(this, placeId)
     }
 
     override fun showMessage(messageText: String) {

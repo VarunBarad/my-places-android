@@ -152,8 +152,8 @@ class AddPlacePresenter(
                             this.view.showMessage(ERROR_MESSAGE_SQL_INSERTION)
                         },
                         onSuccess = { placeId ->
-                            // ToDo: Open place-details screen
-                            this.view.showMessage("$placeId Place saved successfully")
+                            this.view.openPlaceDetailsScreen(placeId)
+                            this.view.close()
                         }
                     )
             )
