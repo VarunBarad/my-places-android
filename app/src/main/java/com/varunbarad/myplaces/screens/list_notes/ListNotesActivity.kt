@@ -10,7 +10,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.varunbarad.myplaces.R
 import com.varunbarad.myplaces.databinding.ActivityListNotesBinding
 import com.varunbarad.myplaces.model.UiNote
-import com.varunbarad.myplaces.screens.create_note.CreateNoteActivity
+import com.varunbarad.myplaces.screens.add_place.AddPlaceActivity
 import com.varunbarad.myplaces.screens.list_notes.notes_adapter.NotesAdapter
 import com.varunbarad.myplaces.screens.note_details.NoteDetailsActivity
 import com.varunbarad.myplaces.util.Dependencies
@@ -93,7 +93,7 @@ class ListNotesActivity : AppCompatActivity(), ListNotesView {
     }
 
     override fun openCreateNoteScreen() {
-        CreateNoteActivity.start(this)
+        AddPlaceActivity.start(this)
     }
 
     override fun openNoteDetailsScreen(noteId: Long) {
