@@ -34,10 +34,6 @@
         </activity>
 
         <activity
-            android:name=".screens.create_note.CreateNoteActivity"
-            android:parentActivityName=".screens.list_notes.ListNotesActivity" />
-
-        <activity
             android:name=".screens.note_details.NoteDetailsActivity"
             android:parentActivityName=".screens.list_notes.ListNotesActivity" />
 
