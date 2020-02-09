@@ -1,9 +1,6 @@
 package com.varunbarad.myplaces.external_services.local_database
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Update
+import androidx.room.*
 import com.varunbarad.myplaces.external_services.local_database.model.DbLocation
 import io.reactivex.Completable
 import io.reactivex.Observable
@@ -25,4 +22,7 @@ interface PlacesDao  {
 
     @Update
     fun updatePlaceDetails(location: DbLocation): Completable
+
+    @Delete
+    fun deletePlace(location: DbLocation): Completable
 }

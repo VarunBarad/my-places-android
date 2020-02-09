@@ -20,4 +20,6 @@ interface PlacesRepository {
     fun getPlaceDetails(locationId: Long): Observable<DbLocation>
 
     fun updatePlaceDetails(location: DbLocation): Completable
+
+    fun deletePlace(place: DbLocation): Completable
 }

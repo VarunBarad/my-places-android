@@ -6,4 +6,8 @@
     <color name="colorTextPrimary">#ff000000</color>
     <color name="colorTextSecondary">#80000000</color>
     <color name="colorIconInverted">#ffffffff</color>
+
+    <color name="colorOpenMap">#2196f3</color>
+    <color name="colorOpen">#795548</color>
+    <color name="colorDelete">#f44336</color>
 </resources>

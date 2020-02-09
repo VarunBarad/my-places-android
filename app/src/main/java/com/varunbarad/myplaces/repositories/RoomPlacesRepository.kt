@@ -50,4 +50,10 @@ class RoomPlacesRepository(private val placesDao: PlacesDao) : PlacesRepository 
             .subscribeOn(ThreadSchedulers.io())
             .observeOn(ThreadSchedulers.main())
     }
+
+    override fun deletePlace(place: DbLocation): Completable {
+        return placesDao.deletePlace(place)
+            .subscribeOn(ThreadSchedulers.io())
+            .observeOn(ThreadSchedulers.main())
+    }
 }

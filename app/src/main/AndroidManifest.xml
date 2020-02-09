@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.varunbarad.myplaces">
-    
+
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
@@ -24,6 +24,15 @@
         </activity>
 
         <activity
+            android:name=".screens.list_places.ListPlacesActivity"
+            android:label="@string/title_activity_list_places">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
             android:name=".screens.create_note.CreateNoteActivity"
             android:parentActivityName=".screens.list_notes.ListNotesActivity" />
 
@@ -33,6 +42,6 @@
 
         <activity
             android:name=".screens.add_place.AddPlaceActivity"
-            android:parentActivityName=".screens.list_notes.ListNotesActivity" />
+            android:parentActivityName=".screens.list_places.ListPlacesActivity" />
     </application>
 </manifest>

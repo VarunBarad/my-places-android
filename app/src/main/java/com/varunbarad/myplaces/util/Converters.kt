@@ -28,3 +28,14 @@ fun DbLocation.toUiLocation(): UiLocation {
         longitude = this.longitude
     )
 }
+
+fun UiLocation.toDbLocation(): DbLocation {
+    return DbLocation(
+        id = this.locationId,
+        name = this.name,
+        comments = this.comments,
+        timestamp = this.timestamp,
+        latitude = this.latitude,
+        longitude = this.longitude
+    )
+}
