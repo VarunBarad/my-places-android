@@ -94,6 +94,7 @@ class PlaceDetailsPresenter(
                                                 this.view.showTemporaryMessage(
                                                     SUCCESS_MESSAGE_DELETE_PLACE
                                                 )
+                                                this.view.close()
                                             }
                                         )
                                 }

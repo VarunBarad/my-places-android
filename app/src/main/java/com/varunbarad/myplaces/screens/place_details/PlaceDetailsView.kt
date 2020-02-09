@@ -11,6 +11,7 @@ interface PlaceDetailsView {
     fun updateScreen(viewState: PlaceDetailsViewState)
     fun showMessage(messageText: String)
     fun showTemporaryMessage(messageText: String)
+    fun close()
 
     fun copyTextToClipboard(textContents: String)
     fun openPlaceInMap(latitude: Double, longitude: Double)

@@ -134,6 +134,10 @@ class PlaceDetailsActivity : AppCompatActivity(), PlaceDetailsView {
         ).show()
     }
 
+    override fun close() {
+        this.finish()
+    }
+
     override fun copyTextToClipboard(textContents: String) {
         this.copyStringToClipboard(textContents)
     }
