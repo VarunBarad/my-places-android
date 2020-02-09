@@ -12,6 +12,7 @@ import com.varunbarad.myplaces.databinding.ActivityListPlacesBinding
 import com.varunbarad.myplaces.model.UiLocation
 import com.varunbarad.myplaces.screens.add_place.AddPlaceActivity
 import com.varunbarad.myplaces.screens.list_places.places_adapter.PlacesAdapter
+import com.varunbarad.myplaces.screens.place_details.PlaceDetailsActivity
 import com.varunbarad.myplaces.util.Dependencies
 import com.varunbarad.myplaces.util.Event
 import com.varunbarad.myplaces.util.createIntentToOpenCoordinatesOnMap
@@ -111,7 +112,6 @@ class ListPlacesActivity : AppCompatActivity(), ListPlacesView {
     }
 
     override fun openPlaceDetailsScreen(placeId: Long) {
-        // ToDo: Open Place details screen
-        this.showMessage("Open place details screen for $placeId")
+        PlaceDetailsActivity.start(this, placeId)
     }
 }
