@@ -8,8 +8,8 @@ data class UiLocation(
     val name: String,
     val comments: String,
     val timestamp: Date,
-    val latitude: String,
-    val longitude: String
+    val latitude: Double,
+    val longitude: Double
 ) {
     companion object {
         @JvmStatic

@@ -24,8 +24,8 @@ fun DbLocation.toUiLocation(): UiLocation {
         name = this.name,
         comments = this.comments,
         timestamp = this.timestamp,
-        latitude = this.latitude,
-        longitude = this.longitude
+        latitude = this.latitude.toDouble(),
+        longitude = this.longitude.toDouble()
     )
 }
 
@@ -35,7 +35,7 @@ fun UiLocation.toDbLocation(): DbLocation {
         name = this.name,
         comments = this.comments,
         timestamp = this.timestamp,
-        latitude = this.latitude,
-        longitude = this.longitude
+        latitude = this.latitude.toString(),
+        longitude = this.longitude.toString()
     )
 }

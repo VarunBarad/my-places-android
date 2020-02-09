@@ -14,6 +14,7 @@ import com.varunbarad.myplaces.screens.add_place.AddPlaceActivity
 import com.varunbarad.myplaces.screens.list_places.places_adapter.PlacesAdapter
 import com.varunbarad.myplaces.util.Dependencies
 import com.varunbarad.myplaces.util.Event
+import com.varunbarad.myplaces.util.createIntentToOpenCoordinatesOnMap
 import io.reactivex.Observable
 
 class ListPlacesActivity : AppCompatActivity(), ListPlacesView {
@@ -106,8 +107,7 @@ class ListPlacesActivity : AppCompatActivity(), ListPlacesView {
     }
 
     override fun openPlaceInMap(latitude: Double, longitude: Double) {
-        // ToDo: Open coordinates in map
-        this.showMessage("Open map at coordinates ${latitude}N, ${longitude}E")
+        this.startActivity(createIntentToOpenCoordinatesOnMap(latitude, longitude))
     }
 
     override fun openPlaceDetailsScreen(placeId: Long) {

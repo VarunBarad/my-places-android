@@ -41,10 +41,7 @@ class ListPlacesPresenter(
         this.serviceDisposables.add(
             this.view
                 .onOpenInMapPlaceClick()
-                .subscribeBy {
-                    // ToDo: Open this location on system-app for maps
-                    this.view.showMessage("Open ${it.name} on map")
-                }
+                .subscribeBy { this.view.openPlaceInMap(it.latitude, it.longitude) }
         )
 
         this.serviceDisposables.add(
