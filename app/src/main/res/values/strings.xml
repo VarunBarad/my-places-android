@@ -4,6 +4,7 @@
     <string name="title_activity_list_places">@string/app_name</string>
     <string name="title_activity_list_notes">@string/app_name</string>
     <string name="title_activity_create_note">Create new Note</string>
+    <string name="title_activity_add_place">Add this place</string>
     <string name="title_activity_note_details">Note details</string>
 
     <string name="label_save">Save</string>
