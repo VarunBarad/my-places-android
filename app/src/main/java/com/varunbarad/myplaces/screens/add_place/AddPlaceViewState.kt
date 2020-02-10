@@ -5,5 +5,6 @@ data class AddPlaceViewState(
     val commentsValue: String,
     val nameErrorText: String,
     val showNameError: Boolean,
-    val coordinatesText: String
+    val coordinatesText: String,
+    val showLocationPermissionExplanationText: Boolean
 )

@@ -36,6 +36,38 @@ class AddPlacePresenter(
                 .onButtonSavePlaceClick()
                 .subscribeBy { this.handleSaveButtonClick() }
         )
+
+        if (this.view.isLocationPermissionAvailable()) {
+            this.view.updateScreen(
+                AddPlaceViewState(
+                    nameValue = this.view.getNameEditTextValue(),
+                    commentsValue = this.view.getCommentsEditTextValue(),
+                    nameErrorText = "",
+                    showNameError = false,
+                    coordinatesText = if ((latestLatitude == null) || (latestLongitude == null)) {
+                        ""
+                    } else {
+                        "${latestLatitude}N, ${latestLongitude}E"
+                    },
+                    showLocationPermissionExplanationText = false
+                )
+            )
+        } else {
+            this.view.updateScreen(
+                AddPlaceViewState(
+                    nameValue = this.view.getNameEditTextValue(),
+                    commentsValue = this.view.getCommentsEditTextValue(),
+                    nameErrorText = "",
+                    showNameError = false,
+                    coordinatesText = if ((latestLatitude == null) || (latestLongitude == null)) {
+                        ""
+                    } else {
+                        "${latestLatitude}N, ${latestLongitude}E"
+                    },
+                    showLocationPermissionExplanationText = true
+                )
+            )
+        }
     }
 
     fun onStop() {
@@ -86,7 +118,8 @@ class AddPlacePresenter(
                     ""
                 },
                 showNameError = nameValue.isBlank(),
-                coordinatesText = "${location.latitude}N, ${location.longitude}E"
+                coordinatesText = "${location.latitude}N, ${location.longitude}E",
+                showLocationPermissionExplanationText = false
             )
         )
     }
@@ -106,15 +139,29 @@ class AddPlacePresenter(
 
         if (nameValue.isBlank()) {
             if ((latitude == null) || (longitude == null)) {
-                this.view.updateScreen(
-                    AddPlaceViewState(
-                        nameValue = nameValue,
-                        commentsValue = commentValue,
-                        nameErrorText = ERROR_MESSAGE_NAME_BLANK,
-                        showNameError = true,
-                        coordinatesText = ""
+                if (this.view.isLocationPermissionAvailable()) {
+                    this.view.updateScreen(
+                        AddPlaceViewState(
+                            nameValue = nameValue,
+                            commentsValue = commentValue,
+                            nameErrorText = ERROR_MESSAGE_NAME_BLANK,
+                            showNameError = true,
+                            coordinatesText = "",
+                            showLocationPermissionExplanationText = false
+                        )
                     )
-                )
+                } else {
+                    this.view.updateScreen(
+                        AddPlaceViewState(
+                            nameValue = nameValue,
+                            commentsValue = commentValue,
+                            nameErrorText = ERROR_MESSAGE_NAME_BLANK,
+                            showNameError = true,
+                            coordinatesText = "",
+                            showLocationPermissionExplanationText = true
+                        )
+                    )
+                }
                 this.view.showMessage(ERROR_MESSAGE_COORDINATES_UNAVAILABLE)
             } else {
                 this.view.updateScreen(
@@ -123,20 +170,35 @@ class AddPlacePresenter(
                         commentsValue = commentValue,
                         nameErrorText = ERROR_MESSAGE_NAME_BLANK,
                         showNameError = true,
-                        coordinatesText = "${latitude}N, ${longitude}E"
+                        coordinatesText = "${latitude}N, ${longitude}E",
+                        showLocationPermissionExplanationText = false
                     )
                 )
             }
         } else if ((latitude == null) || (longitude == null)) {
-            this.view.updateScreen(
-                AddPlaceViewState(
-                    nameValue = nameValue,
-                    commentsValue = commentValue,
-                    nameErrorText = "",
-                    showNameError = false,
-                    coordinatesText = ""
+            if (this.view.isLocationPermissionAvailable()) {
+                this.view.updateScreen(
+                    AddPlaceViewState(
+                        nameValue = nameValue,
+                        commentsValue = commentValue,
+                        nameErrorText = "",
+                        showNameError = false,
+                        coordinatesText = "",
+                        showLocationPermissionExplanationText = false
+                    )
                 )
-            )
+            } else {
+                this.view.updateScreen(
+                    AddPlaceViewState(
+                        nameValue = nameValue,
+                        commentsValue = commentValue,
+                        nameErrorText = "",
+                        showNameError = false,
+                        coordinatesText = "",
+                        showLocationPermissionExplanationText = true
+                    )
+                )
+            }
             this.view.showMessage(ERROR_MESSAGE_COORDINATES_UNAVAILABLE)
         } else {
             this.serviceDisposables.add(

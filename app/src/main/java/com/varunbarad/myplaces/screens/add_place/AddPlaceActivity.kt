@@ -170,6 +170,13 @@ class AddPlaceActivity : AppCompatActivity(), AddPlaceView {
             } else {
                 View.GONE
             }
+
+        this.viewBinding.textViewGpsAccessRequiredMessage.visibility =
+            if (viewState.showLocationPermissionExplanationText) {
+                View.VISIBLE
+            } else {
+                View.GONE
+            }
     }
 
     override fun close() {
