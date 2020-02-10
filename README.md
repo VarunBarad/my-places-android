@@ -29,3 +29,13 @@ gradlew.bat test
 ```
 
 After it finishes, you can find the results of the test in this directory: `<project-dir>/app/build/reports/test/testReleaseUnitTest`
+
+## Screenshots
+
+![Home Screen - No Places](https://raw.githubusercontent.com/VarunBarad/my-places-android/master/screenshots/01%20No%20Saved%20Places.png)
+
+![Home Screen - With Places](https://raw.githubusercontent.com/VarunBarad/my-places-android/master/screenshots/04%20Saved%20Places%20List.png)
+
+![Add Place](https://raw.githubusercontent.com/VarunBarad/my-places-android/master/screenshots/02%20Add%20Place.png)
+
+![Place Details](https://raw.githubusercontent.com/VarunBarad/my-places-android/master/screenshots/03%20Place%20Details.png)
