@@ -127,7 +127,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="@dimen/margin_interElement_horizontal"
                         android:layout_weight="1"
-                        android:text="Open In Map"
+                        android:text="@string/label_openInMap"
                         app:backgroundTint="@color/colorOpenMap" />
 
                     <com.google.android.material.button.MaterialButton
@@ -136,7 +136,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/margin_interElement_horizontal"
                         android:layout_weight="1"
-                        android:text="Delete"
+                        android:text="@string/label_delete"
                         app:backgroundTint="@color/colorDelete" />
                 </androidx.appcompat.widget.LinearLayoutCompat>
             </androidx.appcompat.widget.LinearLayoutCompat>

@@ -5,5 +5,14 @@
     <string name="title_activity_add_place">Add this place</string>
     <string name="title_activity_place_details">Place details</string>
 
+    <string name="label_openInMap">Open In Map</string>
+    <string name="label_openDetails">Open Details</string>
+    <string name="label_delete">Delete</string>
+    <string name="label_name">Name</string>
+    <string name="label_comment">Comments</string>
+    <string name="label_fetchLocationCoordinates">Fetch Location Coordinates</string>
+    <string name="label_savePlace">Save Place</string>
+
     <string name="message_noStoredPlaces">There are no stored places.\n\nTap that button down there to add a new place.</string>
+    <string name="message_locationPermissionExplanation">We will need permission to access device location to fetch coordinates</string>
 </resources>
