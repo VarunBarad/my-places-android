@@ -1,6 +1,10 @@
 package com.varunbarad.myplaces.screens.list_places
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -18,6 +22,10 @@ import com.varunbarad.myplaces.util.Dependencies
 import com.varunbarad.myplaces.util.createIntentToOpenCoordinatesOnMap
 
 class ListPlacesActivity : AppCompatActivity(), ListPlacesView, PlaceClickListener {
+    companion object {
+        private const val REQUEST_CODE_FILE_CHOOSER = 1809
+    }
+
     private lateinit var viewBinding: ActivityListPlacesBinding
 
     private val placesAdapter: PlacesAdapter = PlacesAdapter(this)
@@ -49,11 +57,26 @@ class ListPlacesActivity : AppCompatActivity(), ListPlacesView, PlaceClickListen
         )
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.options_list_places, menu)
+        return true
+    }
+
     override fun onStart() {
         super.onStart()
 
         this.presenter.onStart()
         this.viewBinding.buttonAddPlace.setOnClickListener { this.presenter.addPlace() }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.button_export -> {
+                this.presenter.exportData()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
     override fun onStop() {
@@ -62,6 +85,28 @@ class ListPlacesActivity : AppCompatActivity(), ListPlacesView, PlaceClickListen
         this.viewBinding.buttonAddPlace.setOnClickListener(null)
 
         super.onStop()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == REQUEST_CODE_FILE_CHOOSER) {
+            try {
+                val result = when (resultCode) {
+                    RESULT_OK -> {
+                        val fileUri = data!!.data!!
+                        val outputStream = contentResolver.openOutputStream(fileUri)!!
+                        FileChooserResult.Success(outputStream)
+                    }
+                    RESULT_CANCELED -> FileChooserResult.Error
+                    else -> FileChooserResult.Error
+                }
+                this.presenter.onExportDataFileChooserResult(result)
+            } catch (e: Exception) {
+                Log.e("MyPlaces", e.message, e)
+                this.showMessage(getString(R.string.message_errorInExport))
+            }
+        }
     }
 
     override fun onClickOpenInMap(place: UiLocation) {
@@ -106,5 +151,14 @@ class ListPlacesActivity : AppCompatActivity(), ListPlacesView, PlaceClickListen
 
     override fun openPlaceDetailsScreen(placeId: Long) {
         PlaceDetailsActivity.start(this, placeId)
+    }
+
+    override fun openExportFileChooser(fileName: String, mimeType: String) {
+        val intent = Intent(Intent.ACTION_CREATE_DOCUMENT).apply {
+            addCategory(Intent.CATEGORY_OPENABLE)
+            type = mimeType
+            putExtra(Intent.EXTRA_TITLE, fileName)
+        }
+        startActivityForResult(intent, REQUEST_CODE_FILE_CHOOSER)
     }
 }

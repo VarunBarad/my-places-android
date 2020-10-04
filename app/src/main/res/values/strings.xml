@@ -12,7 +12,9 @@
     <string name="label_comment">Comments</string>
     <string name="label_fetchLocationCoordinates">Fetch Location Coordinates</string>
     <string name="label_savePlace">Save Place</string>
+    <string name="label_exportData">Export Data</string>
 
     <string name="message_noStoredPlaces">There are no stored places.\n\nTap that button down there to add a new place.</string>
     <string name="message_locationPermissionExplanation">We will need permission to access device location to fetch coordinates</string>
+    <string name="message_errorInExport">There was an error in exporting your data</string>
 </resources>
