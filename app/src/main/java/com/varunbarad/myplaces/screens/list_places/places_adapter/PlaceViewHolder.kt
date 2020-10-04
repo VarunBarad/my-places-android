@@ -6,22 +6,20 @@ import com.varunbarad.myplaces.model.UiLocation
 
 class PlaceViewHolder(
     private val viewBinding: ListItemPlaceBinding,
-    private val openInMapButtonClickListener: (UiLocation) -> Unit,
-    private val openDetailsButtonClickListener: (UiLocation) -> Unit,
-    private val deleteButtonClickListener: (UiLocation) -> Unit
+    private val placeClickListener: PlaceClickListener
 ) : RecyclerView.ViewHolder(viewBinding.root) {
     fun bind(place: UiLocation) {
         this.viewBinding.textViewName.text = place.name
         this.viewBinding.textViewComment.text = place.comments
 
         this.viewBinding.buttonOpenInMap.setOnClickListener {
-            this.openInMapButtonClickListener(place)
+            this.placeClickListener.onClickOpenInMap(place)
         }
         this.viewBinding.buttonOpenDetails.setOnClickListener {
-            this.openDetailsButtonClickListener(place)
+            this.placeClickListener.onClickOpenDetails(place)
         }
         this.viewBinding.buttonDelete.setOnClickListener {
-            this.deleteButtonClickListener(place)
+            this.placeClickListener.onClickDelete(place)
         }
 
         this.viewBinding.executePendingBindings()

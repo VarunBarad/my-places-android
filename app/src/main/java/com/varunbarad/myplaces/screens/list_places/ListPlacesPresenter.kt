@@ -1,6 +1,7 @@
 package com.varunbarad.myplaces.screens.list_places
 
 import com.varunbarad.myplaces.external_services.local_database.model.DbLocation
+import com.varunbarad.myplaces.model.UiLocation
 import com.varunbarad.myplaces.repositories.PlacesRepository
 import com.varunbarad.myplaces.util.toDbLocation
 import com.varunbarad.myplaces.util.toUiLocation
@@ -19,12 +20,6 @@ class ListPlacesPresenter(
 
     fun onStart() {
         this.serviceDisposables.add(
-            this.view
-                .onButtonAddPlaceClick()
-                .subscribeBy { this.view.openAddPlaceScreen() }
-        )
-
-        this.serviceDisposables.add(
             this.placesRepository
                 .getAllPlacesSortedAlphabeticallyByName()
                 .map { databasePlaces: List<DbLocation> -> databasePlaces.map { it.toUiLocation() } }
@@ -37,29 +32,25 @@ class ListPlacesPresenter(
                     )
                 }
         )
+    }
 
-        this.serviceDisposables.add(
-            this.view
-                .onOpenInMapPlaceClick()
-                .subscribeBy { this.view.openPlaceInMap(it.latitude, it.longitude) }
-        )
+    fun addPlace() {
+        this.view.openAddPlaceScreen()
+    }
 
-        this.serviceDisposables.add(
-            this.view
-                .onOpenDetailsPlaceClick()
-                .subscribeBy { this.view.openPlaceDetailsScreen(it.locationId) }
-        )
+    fun openInMap(place: UiLocation) {
+        this.view.openPlaceInMap(place.latitude, place.longitude)
+    }
 
+    fun openDetails(place: UiLocation) {
+        this.view.openPlaceDetailsScreen(place.locationId)
+    }
+
+    fun deletePlace(place: UiLocation) {
         this.serviceDisposables.add(
-            this.view
-                .onDeletePlaceClick()
-                .subscribeBy { place ->
-                    this.serviceDisposables.add(
-                        this.placesRepository
-                            .deletePlace(place.toDbLocation())
-                            .subscribeBy { this.view.showMessage(MESSAGE_PLACE_DELETED) }
-                    )
-                }
+            this.placesRepository
+                .deletePlace(place.toDbLocation())
+                .subscribeBy { this.view.showMessage(MESSAGE_PLACE_DELETED) }
         )
     }
 

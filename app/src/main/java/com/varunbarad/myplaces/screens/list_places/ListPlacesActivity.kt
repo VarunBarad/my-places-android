@@ -11,17 +11,16 @@ import com.varunbarad.myplaces.R
 import com.varunbarad.myplaces.databinding.ActivityListPlacesBinding
 import com.varunbarad.myplaces.model.UiLocation
 import com.varunbarad.myplaces.screens.add_place.AddPlaceActivity
+import com.varunbarad.myplaces.screens.list_places.places_adapter.PlaceClickListener
 import com.varunbarad.myplaces.screens.list_places.places_adapter.PlacesAdapter
 import com.varunbarad.myplaces.screens.place_details.PlaceDetailsActivity
 import com.varunbarad.myplaces.util.Dependencies
-import com.varunbarad.myplaces.util.Event
 import com.varunbarad.myplaces.util.createIntentToOpenCoordinatesOnMap
-import io.reactivex.Observable
 
-class ListPlacesActivity : AppCompatActivity(), ListPlacesView {
+class ListPlacesActivity : AppCompatActivity(), ListPlacesView, PlaceClickListener {
     private lateinit var viewBinding: ActivityListPlacesBinding
 
-    private val placesAdapter: PlacesAdapter = PlacesAdapter()
+    private val placesAdapter: PlacesAdapter = PlacesAdapter(this)
 
     private lateinit var presenter: ListPlacesPresenter
 
@@ -54,6 +53,7 @@ class ListPlacesActivity : AppCompatActivity(), ListPlacesView {
         super.onStart()
 
         this.presenter.onStart()
+        this.viewBinding.buttonAddPlace.setOnClickListener { this.presenter.addPlace() }
     }
 
     override fun onStop() {
@@ -64,23 +64,16 @@ class ListPlacesActivity : AppCompatActivity(), ListPlacesView {
         super.onStop()
     }
 
-    override fun onButtonAddPlaceClick(): Observable<Event> {
-        return Observable.create { emitter ->
-            this.viewBinding.buttonAddPlace.setOnClickListener { emitter.onNext(Event.IGNORE) }
-            emitter.setCancellable { this.viewBinding.buttonAddPlace.setOnClickListener(null) }
-        }
+    override fun onClickOpenInMap(place: UiLocation) {
+        this.presenter.openInMap(place)
     }
 
-    override fun onOpenInMapPlaceClick(): Observable<UiLocation> {
-        return this.placesAdapter.getOpenInMapObservable()
+    override fun onClickOpenDetails(place: UiLocation) {
+        this.presenter.openDetails(place)
     }
 
-    override fun onOpenDetailsPlaceClick(): Observable<UiLocation> {
-        return this.placesAdapter.getOpenDetailsObservable()
-    }
-
-    override fun onDeletePlaceClick(): Observable<UiLocation> {
-        return this.placesAdapter.getDeleteObservable()
+    override fun onClickDelete(place: UiLocation) {
+        this.presenter.deletePlace(place)
     }
 
     override fun updateScreen(viewState: ListPlacesViewState) {
