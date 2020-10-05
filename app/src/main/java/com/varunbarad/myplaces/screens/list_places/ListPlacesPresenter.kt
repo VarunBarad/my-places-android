@@ -1,10 +1,14 @@
 package com.varunbarad.myplaces.screens.list_places
 
 import android.util.Log
+import com.squareup.moshi.Types
+import com.varunbarad.myplaces.external_services.export.model.ExportLocation
 import com.varunbarad.myplaces.external_services.local_database.model.DbLocation
 import com.varunbarad.myplaces.model.UiLocation
 import com.varunbarad.myplaces.repositories.PlacesRepository
+import com.varunbarad.myplaces.util.Dependencies
 import com.varunbarad.myplaces.util.toDbLocation
+import com.varunbarad.myplaces.util.toExportLocation
 import com.varunbarad.myplaces.util.toUiLocation
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.subscribeBy
@@ -68,15 +72,34 @@ class ListPlacesPresenter(
                 this.view.showMessage(MESSAGE_EXPORT_ERROR)
             }
             is FileChooserResult.Success -> {
-                try {
-                    result.fileOutputStream.use {
-                        // ToDo: Write the JSON of all the objects
-                        it.write("{\"name\":\"Varun\",\"message\":\"Finally\"}".toByteArray(Charsets.UTF_8))
-                    }
-                } catch (e: Exception) {
-                    Log.e("MyPlaces", e.message, e)
-                    this.view.showMessage(MESSAGE_EXPORT_ERROR)
-                }
+                this.serviceDisposables.add(
+                    this.placesRepository
+                        .getAllPlacesSortedAlphabeticallyByName()
+                        .firstOrError()
+                        .map { places -> places.map { it.toExportLocation() } }
+                        .subscribeBy { places ->
+                            try {
+                                result.fileOutputStream.use {
+                                    val adapter = Dependencies.moshi
+                                        .adapter<List<ExportLocation>>(
+                                            Types.newParameterizedType(
+                                                List::class.java,
+                                                ExportLocation::class.java
+                                            )
+                                        )
+
+                                    it.write(
+                                        adapter.toJson(places).toByteArray(
+                                            charset = Charsets.UTF_8
+                                        )
+                                    )
+                                }
+                            } catch (e: Exception) {
+                                Log.e("MyPlaces", e.message, e)
+                                this.view.showMessage(MESSAGE_EXPORT_ERROR)
+                            }
+                        }
+                )
             }
         }
     }

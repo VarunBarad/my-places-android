@@ -2,6 +2,8 @@ package com.varunbarad.myplaces.util
 
 import android.content.Context
 import androidx.room.Room
+import com.squareup.moshi.Moshi
+import com.varunbarad.myplaces.external_services.export.type_adapters.DateMoshiTypeAdapter
 import com.varunbarad.myplaces.external_services.local_database.MyPlacesDatabase
 import com.varunbarad.myplaces.repositories.RoomPlacesRepository
 
@@ -25,4 +27,8 @@ object Dependencies {
     fun getRoomPlacesRepository(context: Context): RoomPlacesRepository {
         return RoomPlacesRepository(this.getPlacesDatabase(context).placesDao())
     }
+
+    val moshi: Moshi = Moshi.Builder()
+        .add(DateMoshiTypeAdapter())
+        .build()
 }
