@@ -10,6 +10,7 @@ buildscript {
                         rxKotlin : '2.3.0',
                         rxAndroid: '2.1.1'
                 ],
+                moshi             : '1.11.0',
                 androidX          : [
                         kotlinExtensions: '1.3.2',
                         appCompat       : '1.2.0',

@@ -62,13 +62,7 @@ dependencies {
     // Google Play Location library
     implementation "com.google.android.gms:play-services-location:${libraryVersions.googlePlayServices.location}"
 
-    // Testing Libraries
-    testImplementation "junit:junit:${libraryVersions.jUnit.core}"
-
-    // Mockito
-    testImplementation "org.mockito:mockito-core:${libraryVersions.mockito.core}"
-
-    // Android Instrumentation Tests
-    androidTestImplementation "androidx.test.ext:junit:${libraryVersions.jUnit.androidExtension}"
-    androidTestImplementation "androidx.test.espresso:espresso-core:${libraryVersions.espresso.core}"
+    // Moshi
+    implementation "com.squareup.moshi:moshi:${libraryVersions.moshi}"
+    kapt "com.squareup.moshi:moshi-kotlin-codegen:${libraryVersions.moshi}"
 }
