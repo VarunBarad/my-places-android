@@ -3,7 +3,7 @@
 buildscript {
     ext {
         libraryVersions = [
-                kotlin            : '1.3.61',
+                kotlin            : '1.4.10',
                 jodaTimeAndroid   : '2.10.3',
                 rxJava            : [
                         rxJava2  : '2.2.9',
@@ -11,24 +11,14 @@ buildscript {
                         rxAndroid: '2.1.1'
                 ],
                 androidX          : [
-                        kotlinExtensions: '1.1.0',
-                        appCompat       : '1.1.0',
-                        constraintLayout: '1.1.3',
+                        kotlinExtensions: '1.3.2',
+                        appCompat       : '1.2.0',
+                        constraintLayout: '2.0.1',
                         materialDesign  : '1.0.0',
-                        room            : '2.2.3',
+                        room            : '2.2.5',
                 ],
                 googlePlayServices: [
-                        location: '17.0.0'
-                ],
-                jUnit             : [
-                        core            : '4.12',
-                        androidExtension: '1.1.1'
-                ],
-                mockito           : [
-                        core: '2.24.5'
-                ],
-                espresso          : [
-                        core: '3.2.0'
+                        location: '17.1.0'
                 ]
         ]
     }
@@ -39,7 +29,7 @@ buildscript {
 
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.5.3'
+        classpath 'com.android.tools.build:gradle:4.0.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${libraryVersions.kotlin}"
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
