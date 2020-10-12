@@ -2,80 +2,105 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/container_place"
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingStart="@dimen/margin_activity_horizontal"
-        android:paddingTop="@dimen/margin_activity_vertical"
-        android:paddingEnd="@dimen/margin_activity_horizontal"
-        android:paddingBottom="@dimen/margin_activity_vertical">
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/textView_name"
-            style="@style/TextAppearance.MaterialComponents.Subtitle1"
-            android:layout_width="0dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        app:cardCornerRadius="5dp">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/container_place"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:textColor="@color/colorTextPrimary"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="Coffee and Code" />
+            android:background="@color/white"
+            android:paddingStart="@dimen/margin_activity_horizontal"
+            android:paddingTop="@dimen/margin_activity_vertical"
+            android:paddingEnd="@dimen/margin_activity_horizontal"
+            android:paddingBottom="@dimen/margin_activity_vertical">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/textView_comment"
-            style="@style/TextAppearance.MaterialComponents.Body2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_interElement_vertical"
-            android:ellipsize="end"
-            android:maxLines="2"
-            android:textColor="@color/colorTextSecondary"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textView_name"
-            tools:text="A place to code with nice coffee" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textView_name"
+                style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Coffee and Code" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/button_openInMap"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="@dimen/margin_interElement_vertical"
-            android:layout_marginEnd="@dimen/margin_interElement_horizontal"
-            android:text="@string/label_openInMap"
-            app:backgroundTint="@color/colorOpenMap"
-            app:layout_constraintBottom_toBottomOf="@id/button_openDetails"
-            app:layout_constraintEnd_toStartOf="@id/button_openDetails"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textView_comment" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textView_comment"
+                style="@style/TextAppearance.MaterialComponents.Body2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_interElement_vertical"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textView_name"
+                tools:text="A place to code with nice coffee" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/button_openDetails"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_interElement_horizontal"
-            android:layout_marginTop="@dimen/margin_interElement_vertical"
-            android:layout_marginEnd="@dimen/margin_interElement_horizontal"
-            android:text="@string/label_openDetails"
-            app:backgroundTint="@color/colorOpen"
-            app:layout_constraintEnd_toStartOf="@id/button_delete"
-            app:layout_constraintStart_toEndOf="@id/button_openInMap"
-            app:layout_constraintTop_toBottomOf="@id/textView_comment" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_openInMap"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="@dimen/margin_interElement_vertical"
+                android:layout_marginEnd="@dimen/margin_interElement_horizontal"
+                android:clickable="true"
+                android:focusable="true"
+                android:text="@string/label_openInMap"
+                android:textColor="@android:color/holo_blue_dark"
+                app:backgroundTint="@color/white"
+                app:layout_constraintBottom_toBottomOf="@id/button_openDetails"
+                app:layout_constraintEnd_toStartOf="@id/button_openDetails"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textView_comment"
+                app:strokeColor="@android:color/holo_blue_dark"
+                app:strokeWidth="2dp" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/button_delete"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="@dimen/margin_interElement_horizontal"
-            android:layout_marginTop="@dimen/margin_interElement_vertical"
-            android:text="@string/label_delete"
-            app:backgroundTint="@color/colorDelete"
-            app:layout_constraintBottom_toBottomOf="@id/button_openDetails"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/button_openDetails"
-            app:layout_constraintTop_toBottomOf="@id/textView_comment" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_openDetails"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_interElement_horizontal"
+                android:layout_marginTop="@dimen/margin_interElement_vertical"
+                android:layout_marginEnd="@dimen/margin_interElement_horizontal"
+                android:clickable="true"
+                android:focusable="true"
+                android:text="@string/label_openDetails"
+                android:textColor="@color/colorOpen"
+                app:backgroundTint="@color/white"
+                app:layout_constraintEnd_toStartOf="@id/button_delete"
+                app:layout_constraintStart_toEndOf="@id/button_openInMap"
+                app:layout_constraintTop_toBottomOf="@id/textView_comment"
+                app:strokeColor="@color/colorOpen"
+                app:strokeWidth="2dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_delete"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="@dimen/margin_interElement_horizontal"
+                android:layout_marginTop="@dimen/margin_interElement_vertical"
+                android:clickable="true"
+                android:focusable="true"
+                android:text="@string/label_delete"
+                android:textColor="@android:color/holo_red_dark"
+                app:backgroundTint="@color/white"
+                app:layout_constraintBottom_toBottomOf="@id/button_openDetails"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/button_openDetails"
+                app:layout_constraintTop_toBottomOf="@id/textView_comment"
+                app:strokeColor="@android:color/holo_red_dark"
+                app:strokeWidth="2dp" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
 </layout>
