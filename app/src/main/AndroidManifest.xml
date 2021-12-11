@@ -8,6 +8,7 @@
     <application
         android:name=".MyPlacesApplication"
         android:allowBackup="true"
+        android:fullBackupOnly="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -16,7 +17,8 @@
 
         <activity
             android:name=".screens.list_places.ListPlacesActivity"
-            android:label="@string/title_activity_list_places">
+            android:label="@string/title_activity_list_places"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
