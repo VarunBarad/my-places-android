@@ -74,7 +74,7 @@ class AddPlaceActivity : AppCompatActivity(), AddPlaceView {
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,
-        grantResults: IntArray
+        grantResults: IntArray,
     ) {
         when (requestCode) {
             PERMISSION_REQUEST_LOCATION -> {
@@ -84,6 +84,7 @@ class AddPlaceActivity : AppCompatActivity(), AddPlaceView {
                     this.locationPermissionResultSubject.onNext(PermissionRequestResult.DENIED)
                 }
             }
+            else -> super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         }
     }
 
