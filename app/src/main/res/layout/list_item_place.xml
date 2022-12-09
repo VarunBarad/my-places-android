@@ -1,81 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container_place"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingStart="@dimen/margin_activity_horizontal"
+    android:paddingTop="@dimen/margin_activity_vertical"
+    android:paddingEnd="@dimen/margin_activity_horizontal"
+    android:paddingBottom="@dimen/margin_activity_vertical">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/container_place"
-        android:layout_width="match_parent"
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView_name"
+        style="@style/TextAppearance.MaterialComponents.Subtitle1"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:paddingStart="@dimen/margin_activity_horizontal"
-        android:paddingTop="@dimen/margin_activity_vertical"
-        android:paddingEnd="@dimen/margin_activity_horizontal"
-        android:paddingBottom="@dimen/margin_activity_vertical">
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="@color/colorTextPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Coffee and Code" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/textView_name"
-            style="@style/TextAppearance.MaterialComponents.Subtitle1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:textColor="@color/colorTextPrimary"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="Coffee and Code" />
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView_comment"
+        style="@style/TextAppearance.MaterialComponents.Body2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_interElement_vertical"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:textColor="@color/colorTextSecondary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView_name"
+        tools:text="A place to code with nice coffee" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/textView_comment"
-            style="@style/TextAppearance.MaterialComponents.Body2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_interElement_vertical"
-            android:ellipsize="end"
-            android:maxLines="2"
-            android:textColor="@color/colorTextSecondary"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textView_name"
-            tools:text="A place to code with nice coffee" />
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button_openInMap"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/margin_interElement_vertical"
+        android:layout_marginEnd="@dimen/margin_interElement_horizontal"
+        android:text="@string/label_openInMap"
+        app:backgroundTint="@color/colorOpenMap"
+        app:layout_constraintBottom_toBottomOf="@id/button_openDetails"
+        app:layout_constraintEnd_toStartOf="@id/button_openDetails"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView_comment" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/button_openInMap"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="@dimen/margin_interElement_vertical"
-            android:layout_marginEnd="@dimen/margin_interElement_horizontal"
-            android:text="@string/label_openInMap"
-            app:backgroundTint="@color/colorOpenMap"
-            app:layout_constraintBottom_toBottomOf="@id/button_openDetails"
-            app:layout_constraintEnd_toStartOf="@id/button_openDetails"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textView_comment" />
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button_openDetails"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_interElement_horizontal"
+        android:layout_marginTop="@dimen/margin_interElement_vertical"
+        android:layout_marginEnd="@dimen/margin_interElement_horizontal"
+        android:text="@string/label_openDetails"
+        app:backgroundTint="@color/colorOpen"
+        app:layout_constraintEnd_toStartOf="@id/button_delete"
+        app:layout_constraintStart_toEndOf="@id/button_openInMap"
+        app:layout_constraintTop_toBottomOf="@id/textView_comment" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/button_openDetails"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_interElement_horizontal"
-            android:layout_marginTop="@dimen/margin_interElement_vertical"
-            android:layout_marginEnd="@dimen/margin_interElement_horizontal"
-            android:text="@string/label_openDetails"
-            app:backgroundTint="@color/colorOpen"
-            app:layout_constraintEnd_toStartOf="@id/button_delete"
-            app:layout_constraintStart_toEndOf="@id/button_openInMap"
-            app:layout_constraintTop_toBottomOf="@id/textView_comment" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/button_delete"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="@dimen/margin_interElement_horizontal"
-            android:layout_marginTop="@dimen/margin_interElement_vertical"
-            android:text="@string/label_delete"
-            app:backgroundTint="@color/colorDelete"
-            app:layout_constraintBottom_toBottomOf="@id/button_openDetails"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/button_openDetails"
-            app:layout_constraintTop_toBottomOf="@id/textView_comment" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</layout>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button_delete"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/margin_interElement_horizontal"
+        android:layout_marginTop="@dimen/margin_interElement_vertical"
+        android:text="@string/label_delete"
+        app:backgroundTint="@color/colorDelete"
+        app:layout_constraintBottom_toBottomOf="@id/button_openDetails"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/button_openDetails"
+        app:layout_constraintTop_toBottomOf="@id/textView_comment" />
+</androidx.constraintlayout.widget.ConstraintLayout>

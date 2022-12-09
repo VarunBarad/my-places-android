@@ -21,7 +21,5 @@ class PlaceViewHolder(
         this.viewBinding.buttonDelete.setOnClickListener {
             this.placeClickListener.onClickDelete(place)
         }
-
-        this.viewBinding.executePendingBindings()
     }
 }

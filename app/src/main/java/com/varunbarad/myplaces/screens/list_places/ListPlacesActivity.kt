@@ -7,7 +7,6 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
@@ -34,7 +33,8 @@ class ListPlacesActivity : AppCompatActivity(), ListPlacesView, PlaceClickListen
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        this.viewBinding = DataBindingUtil.setContentView(this, R.layout.activity_list_places)
+        this.viewBinding = ActivityListPlacesBinding.inflate(layoutInflater)
+        this.setContentView(this.viewBinding.root)
         this.setSupportActionBar(this.viewBinding.toolbar)
 
         val recyclerViewLayoutManager = LinearLayoutManager(

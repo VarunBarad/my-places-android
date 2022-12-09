@@ -10,13 +10,11 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.databinding.DataBindingUtil
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.GoogleApiAvailability
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.material.snackbar.Snackbar
-import com.varunbarad.myplaces.R
 import com.varunbarad.myplaces.databinding.ActivityAddPlaceBinding
 import com.varunbarad.myplaces.screens.place_details.PlaceDetailsActivity
 import com.varunbarad.myplaces.util.Dependencies
@@ -42,10 +40,8 @@ class AddPlaceActivity : AppCompatActivity(), AddPlaceView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        this.viewBinding = DataBindingUtil.setContentView(
-            this,
-            R.layout.activity_add_place
-        )
+        this.viewBinding = ActivityAddPlaceBinding.inflate(layoutInflater)
+        this.setContentView(this.viewBinding.root)
 
         this.setSupportActionBar(this.viewBinding.toolbar)
         this.supportActionBar?.setDisplayHomeAsUpEnabled(true)

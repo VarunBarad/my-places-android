@@ -6,9 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil
 import com.google.android.material.snackbar.Snackbar
-import com.varunbarad.myplaces.R
 import com.varunbarad.myplaces.databinding.ActivityPlaceDetailsBinding
 import com.varunbarad.myplaces.util.Dependencies
 import com.varunbarad.myplaces.util.Event
@@ -37,10 +35,8 @@ class PlaceDetailsActivity : AppCompatActivity(), PlaceDetailsView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        this.viewBinding = DataBindingUtil.setContentView(
-            this,
-            R.layout.activity_place_details
-        )
+        this.viewBinding = ActivityPlaceDetailsBinding.inflate(layoutInflater)
+        this.setContentView(this.viewBinding.root)
 
         this.setSupportActionBar(this.viewBinding.toolbar)
         this.supportActionBar?.setDisplayHomeAsUpEnabled(true)
