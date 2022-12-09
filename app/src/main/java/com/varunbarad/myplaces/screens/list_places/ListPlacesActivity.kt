@@ -87,6 +87,7 @@ class ListPlacesActivity : AppCompatActivity(), ListPlacesView, PlaceClickListen
         super.onStop()
     }
 
+    @Deprecated(message = "Because its parent method is deprecated")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
