@@ -16,7 +16,7 @@ buildscript {
                         appCompat       : '1.4.0',
                         constraintLayout: '2.1.2',
                         materialDesign  : '1.0.0',
-                        room            : '2.3.0',
+                        room            : '2.4.3',
                 ],
                 googlePlayServices: [
                         location: '19.0.0'
