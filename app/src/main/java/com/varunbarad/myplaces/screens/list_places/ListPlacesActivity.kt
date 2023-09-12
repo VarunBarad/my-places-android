@@ -22,7 +22,7 @@ import com.varunbarad.myplaces.util.createIntentToOpenCoordinatesOnMap
 
 class ListPlacesActivity : AppCompatActivity(), ListPlacesView, PlaceClickListener {
     companion object {
-        private const val REQUEST_CODE_FILE_CHOOSER = 1809
+        private const val REQUEST_CODE_EXPORT_FILE_CHOOSER = 1809
     }
 
     private lateinit var viewBinding: ActivityListPlacesBinding
@@ -91,21 +91,24 @@ class ListPlacesActivity : AppCompatActivity(), ListPlacesView, PlaceClickListen
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        if (requestCode == REQUEST_CODE_FILE_CHOOSER) {
-            try {
-                val result = when (resultCode) {
-                    RESULT_OK -> {
-                        val fileUri = data!!.data!!
-                        val outputStream = contentResolver.openOutputStream(fileUri)!!
-                        FileChooserResult.Success(outputStream)
+        when (requestCode) {
+            REQUEST_CODE_EXPORT_FILE_CHOOSER -> {
+                try {
+                    val result = when (resultCode) {
+                        RESULT_OK -> {
+                            val fileUri = data!!.data!!
+                            val outputStream = contentResolver.openOutputStream(fileUri)!!
+                            ExportFileChooserResult.Success(outputStream)
+                        }
+
+                        RESULT_CANCELED -> ExportFileChooserResult.Error
+                        else -> ExportFileChooserResult.Error
                     }
-                    RESULT_CANCELED -> FileChooserResult.Error
-                    else -> FileChooserResult.Error
+                    this.presenter.onExportDataFileChooserResult(result)
+                } catch (e: Exception) {
+                    Log.e("MyPlaces", e.message, e)
+                    this.showMessage(getString(R.string.message_errorInExport))
                 }
-                this.presenter.onExportDataFileChooserResult(result)
-            } catch (e: Exception) {
-                Log.e("MyPlaces", e.message, e)
-                this.showMessage(getString(R.string.message_errorInExport))
             }
         }
     }
@@ -160,6 +163,6 @@ class ListPlacesActivity : AppCompatActivity(), ListPlacesView, PlaceClickListen
             type = mimeType
             putExtra(Intent.EXTRA_TITLE, fileName)
         }
-        startActivityForResult(intent, REQUEST_CODE_FILE_CHOOSER)
+        startActivityForResult(intent, REQUEST_CODE_EXPORT_FILE_CHOOSER)
     }
 }

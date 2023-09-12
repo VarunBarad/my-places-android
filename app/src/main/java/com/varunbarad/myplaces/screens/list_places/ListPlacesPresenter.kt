@@ -66,12 +66,12 @@ class ListPlacesPresenter(
         this.view.openExportFileChooser(exportFileName(), EXPORT_FILE_MIME_TYPE)
     }
 
-    fun onExportDataFileChooserResult(result: FileChooserResult) {
+    fun onExportDataFileChooserResult(result: ExportFileChooserResult) {
         when (result) {
-            FileChooserResult.Error -> {
+            ExportFileChooserResult.Error -> {
                 this.view.showMessage(MESSAGE_EXPORT_ERROR)
             }
-            is FileChooserResult.Success -> {
+            is ExportFileChooserResult.Success -> {
                 this.serviceDisposables.add(
                     this.placesRepository
                         .getAllPlacesSortedAlphabeticallyByName()
