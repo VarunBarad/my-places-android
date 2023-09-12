@@ -1,6 +1,7 @@
 package com.varunbarad.myplaces.screens.add_place
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -112,6 +113,7 @@ class AddPlaceActivity : AppCompatActivity(), AddPlaceView {
         return this.locationPermissionResultSubject
     }
 
+    @SuppressLint("MissingPermission")
     override fun requestLocation(
         locationListener: (Location) -> Unit,
         errorListener: (Exception) -> Unit
