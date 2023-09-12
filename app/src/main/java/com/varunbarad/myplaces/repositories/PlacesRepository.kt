@@ -13,6 +13,8 @@ interface PlacesRepository {
         longitude: String
     ): Single<Long>
 
+    fun insertAllPlaces(places: List<DbLocation>): Single<List<Long>>
+
     fun getAllPlacesSortedAlphabeticallyByName(): Observable<List<DbLocation>>
 
     fun getAllPlacesSortedReverseChronologically(): Observable<List<DbLocation>>

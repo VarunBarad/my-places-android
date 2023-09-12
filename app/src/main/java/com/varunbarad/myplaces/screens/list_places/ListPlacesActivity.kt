@@ -23,6 +23,7 @@ import com.varunbarad.myplaces.util.createIntentToOpenCoordinatesOnMap
 class ListPlacesActivity : AppCompatActivity(), ListPlacesView, PlaceClickListener {
     companion object {
         private const val REQUEST_CODE_EXPORT_FILE_CHOOSER = 1809
+        private const val REQUEST_CODE_IMPORT_FILE_CHOOSER = 1038
     }
 
     private lateinit var viewBinding: ActivityListPlacesBinding
@@ -75,6 +76,10 @@ class ListPlacesActivity : AppCompatActivity(), ListPlacesView, PlaceClickListen
                 this.presenter.exportData()
                 true
             }
+            R.id.button_import -> {
+                this.presenter.importData()
+                true
+            }
             else -> super.onOptionsItemSelected(item)
         }
     }
@@ -100,7 +105,6 @@ class ListPlacesActivity : AppCompatActivity(), ListPlacesView, PlaceClickListen
                             val outputStream = contentResolver.openOutputStream(fileUri)!!
                             ExportFileChooserResult.Success(outputStream)
                         }
-
                         RESULT_CANCELED -> ExportFileChooserResult.Error
                         else -> ExportFileChooserResult.Error
                     }
@@ -108,6 +112,23 @@ class ListPlacesActivity : AppCompatActivity(), ListPlacesView, PlaceClickListen
                 } catch (e: Exception) {
                     Log.e("MyPlaces", e.message, e)
                     this.showMessage(getString(R.string.message_errorInExport))
+                }
+            }
+            REQUEST_CODE_IMPORT_FILE_CHOOSER -> {
+                try {
+                    val result = when (resultCode) {
+                        RESULT_OK -> {
+                            val fileUri = data!!.data!!
+                            val inputStream = contentResolver.openInputStream(fileUri)!!
+                            ImportFileChooserResult.Success(inputStream)
+                        }
+                        RESULT_CANCELED -> ImportFileChooserResult.Error
+                        else -> ImportFileChooserResult.Error
+                    }
+                    this.presenter.onImportDataFileChooserResult(result)
+                } catch (e: Exception) {
+                    Log.e("MyPlaces", e.message, e)
+                    this.showMessage(getString(R.string.message_errorInImport))
                 }
             }
         }
@@ -164,5 +185,13 @@ class ListPlacesActivity : AppCompatActivity(), ListPlacesView, PlaceClickListen
             putExtra(Intent.EXTRA_TITLE, fileName)
         }
         startActivityForResult(intent, REQUEST_CODE_EXPORT_FILE_CHOOSER)
+    }
+
+    override fun openImportFileChooser(mimeType: String) {
+        val intent = Intent(Intent.ACTION_OPEN_DOCUMENT).apply {
+            addCategory(Intent.CATEGORY_OPENABLE)
+            type = mimeType
+        }
+        startActivityForResult(intent, REQUEST_CODE_IMPORT_FILE_CHOOSER)
     }
 }

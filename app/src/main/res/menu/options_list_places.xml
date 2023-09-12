@@ -5,5 +5,10 @@
         android:id="@+id/button_export"
         android:icon="@drawable/ic_export"
         android:title="@string/label_exportData"
-        app:showAsAction="always" />
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/button_import"
+        android:icon="@drawable/ic_import"
+        android:title="@string/label_importData"
+        app:showAsAction="never" />
 </menu>

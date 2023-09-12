@@ -40,3 +40,14 @@ fun DbLocation.toExportLocation(): ExportLocation {
         timestamp = this.timestamp
     )
 }
+
+fun ExportLocation.toDbLocation(): DbLocation {
+    return DbLocation(
+        id = this.id,
+        name = this.name,
+        comments = this.comments,
+        latitude = this.latitude,
+        longitude = this.longitude,
+        timestamp = this.timestamp,
+    )
+}

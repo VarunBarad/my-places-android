@@ -11,6 +11,9 @@ interface PlacesDao  {
     @Insert
     fun insertPlace(location: DbLocation): Single<Long>
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertAllPlaces(places: List<DbLocation>): Single<List<Long>>
+
     @Query("select * from Locations order by name")
     fun getAllPlacesSortedAlphabeticallyByName(): Observable<List<DbLocation>>
 

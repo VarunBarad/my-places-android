@@ -27,6 +27,12 @@ class RoomPlacesRepository(private val placesDao: PlacesDao) : PlacesRepository 
             .observeOn(ThreadSchedulers.main())
     }
 
+    override fun insertAllPlaces(places: List<DbLocation>): Single<List<Long>> {
+        return placesDao.insertAllPlaces(places = places)
+            .subscribeOn(ThreadSchedulers.io())
+            .observeOn(ThreadSchedulers.main())
+    }
+
     override fun getAllPlacesSortedAlphabeticallyByName(): Observable<List<DbLocation>> {
         return placesDao.getAllPlacesSortedAlphabeticallyByName()
             .subscribeOn(ThreadSchedulers.io())

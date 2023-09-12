@@ -8,4 +8,5 @@ interface ListPlacesView {
     fun openPlaceInMap(latitude: Double, longitude: Double)
     fun openPlaceDetailsScreen(placeId: Long)
     fun openExportFileChooser(fileName: String, mimeType: String)
+    fun openImportFileChooser(mimeType: String)
 }
