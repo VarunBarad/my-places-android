@@ -1,5 +1,6 @@
 package com.varunbarad.myplaces.screens.place_details
 
+import android.util.Log
 import com.varunbarad.myplaces.repositories.PlacesRepository
 import com.varunbarad.myplaces.util.toDbLocation
 import com.varunbarad.myplaces.util.toUiLocation
@@ -42,7 +43,7 @@ class PlaceDetailsPresenter(
                                 isLoaderVisible = false
                             )
                         )
-                        // ToDo: Log error
+                        Log.e("MyPlaces", error.message, error)
                         this.view.showMessage(ERROR_MESSAGE_CANNOT_LOAD_PLACE)
                     },
                     onNext = { place ->
