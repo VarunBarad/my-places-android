@@ -83,21 +83,23 @@ class PlaceDetailsPresenter(
                             this.view
                                 .onButtonDeletePlaceClick()
                                 .subscribeBy {
-                                    this.placesRepository
-                                        .deletePlace(place.toDbLocation())
-                                        .subscribeBy(
-                                            onError = {
-                                                this.view.showMessage(
-                                                    ERROR_MESSAGE_CANNOT_DELETE_PLACE
-                                                )
-                                            },
-                                            onComplete = {
-                                                this.view.showTemporaryMessage(
-                                                    SUCCESS_MESSAGE_DELETE_PLACE
-                                                )
-                                                this.view.close()
-                                            }
-                                        )
+                                    this.serviceDisposables.add(
+                                        this.placesRepository
+                                            .deletePlace(place.toDbLocation())
+                                            .subscribeBy(
+                                                onError = {
+                                                    this.view.showMessage(
+                                                        ERROR_MESSAGE_CANNOT_DELETE_PLACE
+                                                    )
+                                                },
+                                                onComplete = {
+                                                    this.view.showTemporaryMessage(
+                                                        SUCCESS_MESSAGE_DELETE_PLACE
+                                                    )
+                                                    this.view.close()
+                                                }
+                                            )
+                                    )
                                 }
                         )
                     }
