@@ -34,7 +34,7 @@ android {
 
 dependencies {
     // Kotlin
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${libraryVersions.kotlin}"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.7.20"
 
     // Joda Time Android
     implementation "net.danlew:android.joda:2.10.3"

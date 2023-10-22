@@ -3,7 +3,6 @@
 buildscript {
     ext {
         libraryVersions = [
-                kotlin            : '1.7.20',
                 moshi             : '1.14.0',
                 androidX          : [
                         kotlinExtensions: '1.7.0',
@@ -24,7 +23,7 @@ buildscript {
     }
     dependencies {
         classpath "com.android.tools.build:gradle:8.1.2"
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${libraryVersions.kotlin}"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.20"
     }
 }
 
