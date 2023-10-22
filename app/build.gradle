@@ -71,7 +71,7 @@ dependencies {
     implementation "androidx.room:room-rxjava2:2.6.0"
 
     // Google Play Location library
-    implementation "com.google.android.gms:play-services-location:${libraryVersions.googlePlayServices.location}"
+    implementation "com.google.android.gms:play-services-location:21.0.1"
 
     // Moshi
     implementation "com.squareup.moshi:moshi:1.14.0"
