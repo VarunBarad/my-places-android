@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'com.google.devtools.ksp'
 
 android {
     buildFeatures {
@@ -23,6 +24,13 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    kotlinOptions {
+        jvmTarget = '17'
+    }
     packagingOptions {
         resources {
             excludes += ['META-INF/LICENSE.txt', 'META-INF/NOTICE.txt']
@@ -34,7 +42,7 @@ android {
 
 dependencies {
     // Kotlin
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.7.20"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.9.10"
 
     // Joda Time Android
     implementation "net.danlew:android.joda:2.10.3"
@@ -59,7 +67,7 @@ dependencies {
     // Room database library
     implementation "androidx.room:room-runtime:2.6.0"
     annotationProcessor "androidx.room:room-compiler:2.6.0"
-    kapt "androidx.room:room-compiler:2.6.0"
+    ksp "androidx.room:room-compiler:2.6.0"
     implementation "androidx.room:room-rxjava2:2.6.0"
 
     // Google Play Location library
@@ -67,5 +75,5 @@ dependencies {
 
     // Moshi
     implementation "com.squareup.moshi:moshi:1.14.0"
-    kapt "com.squareup.moshi:moshi-kotlin-codegen:1.14.0"
+    ksp "com.squareup.moshi:moshi-kotlin-codegen:1.14.0"
 }
