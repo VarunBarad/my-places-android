@@ -7,11 +7,11 @@ android {
         viewBinding = true
     }
 
-    compileSdkVersion 33
+    compileSdkVersion 34
     defaultConfig {
         applicationId "com.varunbarad.myplaces"
         minSdkVersion 21
-        targetSdkVersion 33
+        targetSdkVersion 34
         versionCode 4
         versionName "1.3"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -57,10 +57,10 @@ dependencies {
     implementation "com.google.android.material:material:${libraryVersions.androidX.materialDesign}"
 
     // Room database library
-    implementation "androidx.room:room-runtime:${libraryVersions.androidX.room}"
-    annotationProcessor "androidx.room:room-compiler:${libraryVersions.androidX.room}"
-    kapt "androidx.room:room-compiler:${libraryVersions.androidX.room}"
-    implementation "androidx.room:room-rxjava2:${libraryVersions.androidX.room}"
+    implementation "androidx.room:room-runtime:2.6.0"
+    annotationProcessor "androidx.room:room-compiler:2.6.0"
+    kapt "androidx.room:room-compiler:2.6.0"
+    implementation "androidx.room:room-rxjava2:2.6.0"
 
     // Google Play Location library
     implementation "com.google.android.gms:play-services-location:${libraryVersions.googlePlayServices.location}"
