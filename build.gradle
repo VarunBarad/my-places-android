@@ -3,7 +3,6 @@
 buildscript {
     ext {
         libraryVersions = [
-                moshi             : '1.14.0',
                 androidX          : [
                         kotlinExtensions: '1.7.0',
                         appCompat       : '1.4.0',
