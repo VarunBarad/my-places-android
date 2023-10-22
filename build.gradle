@@ -4,7 +4,6 @@ buildscript {
     ext {
         libraryVersions = [
                 kotlin            : '1.7.20',
-                jodaTimeAndroid   : '2.10.3',
                 moshi             : '1.14.0',
                 androidX          : [
                         kotlinExtensions: '1.7.0',
