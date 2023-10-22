@@ -59,7 +59,7 @@ dependencies {
     implementation "androidx.appcompat:appcompat:1.6.1"
 
     // Constraint Layout
-    implementation "androidx.constraintlayout:constraintlayout:${libraryVersions.androidX.constraintLayout}"
+    implementation "androidx.constraintlayout:constraintlayout:2.1.4"
 
     // Material Design
     implementation "com.google.android.material:material:${libraryVersions.androidX.materialDesign}"
